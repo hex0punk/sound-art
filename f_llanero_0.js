@@ -1,40 +1,24 @@
 
+let soundAnalyzer;
 let gradient;
-const colors = ['#C55D55', '#da8569', '#f1e1aa', '#f1f4da', '#aabff1', '#8492df', '#6b8ada', '#77a8f2']
-
-
-function mousePressed() {
-    if (song.isPlaying()) {
-        song.pause();
-    } else {
-        song.play();
-    }
-}
-
-function keyPressed() {
-    if (keyCode === LEFT_ARROW) {
-        capturer.start();
-      } else if (keyCode === RIGHT_ARROW) {
-        capturer.stop();
-        capturer.save();
-      }
-  }
+var cnv;
+const colors = ['#C55D55', '#da8569', '#f1e1aa', '#f1f4da', '#aabff1', '#8492df', '#6b8ada', '#77a8f2'];
 
 function preload() {
-    song = loadSound('music/LLanero.wav');
+    song = loadSound('media/LLanero.wav');
 }
 
 function setup() {
-    createCanvas(900, 900);
+    cnv = createCanvas(1080, 1080);
     gradient = createRadialGradient(height / 3, height - (height / 12), width / 2, height / 2 + (height / 4));
     gradient.colors(0, "#ffdcbd", 0.5, "#8bd1fb", 1, "#699be0");
     song.play();
     glitch = new Glitch();
-    fft = new p5.FFT(0.9, 16);
+    soundAnalyzer = new SoundAnalyzer(0.9, 16);
 }
 
 function draw() {
-    var soundVals = getSoundVals();
+    var soundVals = soundAnalyzer.getSoundVals();
 
     backgroundGradient(gradient);
     noStroke();
@@ -51,20 +35,5 @@ function draw() {
         } else {
             ellipse(width / 2, height/ 2, l + soundVals.high * 3);
         }
-    }
-
-    // if (frameCount < 10300) {
-    //     capturer.capture(canvas);
-    // } else if (framecount === 10300) {
-    //     capturer.stop();
-    //     capturer.save();
-    // }
-}
-
-class Ampper {
-    constructor(l, m, h) {
-      this.low = l;
-      this.med = m;
-      this.high = h;
     }
 }

@@ -1,4 +1,5 @@
 
+let soundAnalyzer;
 let glitch, vid, rPosition = 1000;
 p5.disableFriendlyErrors = true;
 
@@ -20,20 +21,11 @@ function setup() {
 	glitch.pixelate(1);
     glitch.errors(false);
 
-    fft = new p5.FFT(0.9, 16);
-}
-
-function mousePressed() {
-    if (song.isPlaying()) {
-        song.pause();
-    } else {
-        song.play();
-        vid.loop();
-    }
+    soundAnalyzer = new SoundAnalyzer(0.9, 16);
 }
 
 function draw() {
-    var soundVals = getSoundVals();
+    var soundVals = soundAnalyzer.getSoundVals();
 
 	if(frameCount % 2 === 0) {
 
@@ -49,12 +41,4 @@ function draw() {
 	}
 
 	image(glitch.image, width / 2, height / 2)
-}
-
-class Ampper {
-    constructor(l, m, h) {
-      this.low = l;
-      this.med = m;
-      this.high = h;
-    }
 }
