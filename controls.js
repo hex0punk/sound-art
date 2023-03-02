@@ -1,4 +1,5 @@
 var uinput;
+var song;
 
 function keyPressed() {
     switch (keyCode) {
@@ -28,5 +29,10 @@ function handleFile(file) {
 
 function setupSongInput(){
     uinput = createFileInput(handleFile);
-    uinput.position(100, 60);
+    uinput.position(20, 110);
+    uinput.parent("controls")
+}
+
+function songIsPlaying() {
+    return song !== null && song !== undefined && song.isPlaying();
 }

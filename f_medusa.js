@@ -22,7 +22,7 @@ var lowStroke = "#1B2430";
 let gui, guiCom;
 
 function setup() {
-  createCanvas(1080, 1080);
+  createCanvas(700, 700);
   setupSongInput();
   let w = width;
   for (let i = 0; i < 40; i++) {
@@ -57,10 +57,10 @@ function setup() {
     w -= 25;
   }
   soundAnalyzer = new SoundAnalyzer(0.9, 16);
-  gui = createGui('Runtime settings').setPosition(100, 150);
+  gui = createGui('Runtime settings').setPosition(20, 180);
   gui.addGlobals('highVal', 'medVal', 'lowVal', 'lowMultiplier', 'medMultiplier', 'highMultiplier');
 
-  guiCom = createGui('Compile settings').setPosition(100, 550);
+  guiCom = createGui('Compile settings').setPosition(300, 180);
   guiCom.addGlobals('highBg', 'highStroke', 'medBg', 'medStroke', 'lowBg', 'lowStroke');
 }
 

@@ -4,11 +4,6 @@ let glitch, vid, rPosition = 1000;
 p5.disableFriendlyErrors = true;
 
 function preload() {
-    vid = createVideo('music/sped2.mp4', function() {
-		vid.hide();
-		vid.volume(0);
-		vid.loop();
-	});
     song = loadSound('music/LLanero.wav');
 }
 

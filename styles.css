@@ -1,5 +1,41 @@
-.center {
+
+.animation {
     padding-top: 50px;
     margin: auto;
-    width: 50%;
+    /* width: 50%; */
+    float: right;
+    margin-right: 50px;
   }
+
+
+.menu {
+    font-family: 'inconsolata';
+}
+
+/* #controls {
+    margin-top: 45px;
+} */
+
+.menu > ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.menu > ul > li {
+  float: left;
+}
+
+.menu > ul > li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+.menu > ul > li a:hover {
+  text-decoration: underline;
+}
