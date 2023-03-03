@@ -1,5 +1,6 @@
 var uinput;
 var song;
+var lowTxt, medTxt, highTxt;
 
 function keyPressed() {
     switch (keyCode) {
@@ -35,4 +36,19 @@ function setupSongInput(){
 
 function songIsPlaying() {
     return song !== null && song !== undefined && song.isPlaying();
+}
+
+function setupAsciiSound() {
+    lowTxt = createP('Low: 0');
+    lowTxt.position(20,600);
+    medTxt = createP('Med: 0');
+    medTxt.position(20,620);
+    highTxt= createP('High: 0');
+    highTxt.position(20,640);
+}
+
+function updateAsciiText(soundVals){
+    lowTxt.html('|'.repeat(soundVals.high));
+    medTxt.html('|'.repeat(soundVals.med));
+    highTxt.html('|'.repeat(soundVals.low));
 }

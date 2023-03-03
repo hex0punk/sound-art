@@ -13,13 +13,11 @@ var medRandBytes = 10;
 var highRandBytes = 10;
 var baseRandBytes = 1;
 
-var lowTxt, medTxt, highTxt;
-
 function setupGlitch(gtype) {
     if (gtype !== "jpg") {
         gtype = "jpg";
     }
-    loadImage('media/oldbill.jpg', function(img){
+    loadImage('images/oldbill.jpg', function(img){
         glitch.loadImage(img);
         glitch.loadType(gtype);
         glitch.loadQuality(.25)
@@ -39,25 +37,14 @@ function setup() {
 	glitch = new Glitch();
 	setupGlitch('jpg');
     soundAnalyzer = new SoundAnalyzer(0.9, 16);
-    
-    lowTxt = createP('Low: 0');
-    lowTxt.position(20,600);
-    medTxt = createP('Med: 0');
-    medTxt.position(20,620);
-    highTxt= createP('High: 0');
-    highTxt.position(20,640);
-}
 
-function updateText(soundVals){
-    lowTxt.html('|'.repeat(soundVals.high));
-    medTxt.html('|'.repeat(soundVals.med));
-    highTxt.html('|'.repeat(soundVals.low));
+    setupAsciiSound();
 }
 
 function draw() {
     glitch.resetBytes();
     var soundVals = soundAnalyzer.getSoundVals();
-    updateText(soundVals);
+    updateAsciiText(soundVals);
 	if(songIsPlaying()) {
         if (soundVals.low > lowThr){
             glitch.randomBytes(lowRandBytes);
