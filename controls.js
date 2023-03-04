@@ -47,7 +47,20 @@ function setupAsciiSound() {
     highTxt.position(20,640);
 }
 
-function updateAsciiText(soundVals){
+function setupGuide() {
+    let txt = createDiv();
+    txt.id('guide');
+    txt.position(20,710);
+    var playTxt;
+    playTxt = createP('P: Play');
+    playTxt.parent('guide')
+    reloadTxt = createP('R: Reload (for compiler settings)');
+    reloadTxt.parent('guide');
+    saveTxt = createP('S: Save image');
+    saveTxt.parent('guide');
+}
+
+function updateAsciiSound(soundVals){
     lowTxt.html('|'.repeat(soundVals.high));
     medTxt.html('|'.repeat(soundVals.med));
     highTxt.html('|'.repeat(soundVals.low));

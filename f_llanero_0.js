@@ -22,6 +22,7 @@ var ringNum = 8;
 
 function setup() {
     cnv = createCanvas(1080, 1080);
+    setupGuide();
     setupSongInput();
     gradient = createRadialGradient(height / 3, height - (height / 12), width / 2, height / 2 + (height / 4));
     gradient.colors(0, "#ffdcbd", 0.5, "#8bd1fb", 1, "#699be0");
@@ -31,12 +32,13 @@ function setup() {
     gui.addGlobals('ringNum', 'lowMultiplier', 'medMultiplier', 'highMultiplier');
 
     soundAnalyzer = new SoundAnalyzer(0.9, 16);
+    setupAsciiSound();
 }
 
 function draw() {
     updateColors();
     var soundVals = soundAnalyzer.getSoundVals();
-
+    updateAsciiSound(soundVals);
     backgroundGradient(gradient);
     noStroke();
 

@@ -23,6 +23,7 @@ let gui, guiCom;
 
 function setup() {
   createCanvas(700, 700);
+  setupGuide();
   setupSongInput();
   let w = width;
   for (let i = 0; i < 40; i++) {
@@ -62,10 +63,13 @@ function setup() {
 
   guiCom = createGui('Compile settings').setPosition(300, 180);
   guiCom.addGlobals('highBg', 'highStroke', 'medBg', 'medStroke', 'lowBg', 'lowStroke');
+  
+  setupAsciiSound();
 }
 
 function draw() {
   var soundVals = soundAnalyzer.getSoundVals();
+  updateAsciiSound(soundVals);
   backgroundPattern(shapes[0].pattern);
 
   for (let s of shapes) {

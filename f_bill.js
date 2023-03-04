@@ -27,6 +27,7 @@ function setupGlitch(gtype) {
 
 function setup() {
     createCanvas(1080, 1080);
+    setupGuide();
     setupSongInput();
     
     imageMode(CENTER);
@@ -44,7 +45,7 @@ function setup() {
 function draw() {
     glitch.resetBytes();
     var soundVals = soundAnalyzer.getSoundVals();
-    updateAsciiText(soundVals);
+    updateAsciiSound(soundVals);
 	if(songIsPlaying()) {
         if (soundVals.low > lowThr){
             glitch.randomBytes(lowRandBytes);
