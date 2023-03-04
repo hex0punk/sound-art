@@ -1,3 +1,7 @@
+var soundBins = [16, 32, 64, 128, 256, 512, 1024];
+var soundSmoothing = 90;
+var guiSound;
+
 class Ampper {
     constructor(l, m, h) {
       this.low = l;
@@ -8,6 +12,9 @@ class Ampper {
 
 class SoundAnalyzer {
     constructor(smoothing, bins) {
+      if (Array.isArray(bins)) {
+        bins = bins[0];
+      }
       this.fft = new p5.FFT(smoothing, bins);
     }
 
@@ -39,4 +46,10 @@ class SoundAnalyzer {
         let av = new Ampper(lavg, mavg, havg);
         return av;
     }
+}
+
+function setupSoundGui(x, y) {
+    guiSound = createGui('Sound settings (must reload)').setPosition(x, y);
+    guiSound.addGlobals('soundSmoothing', 'soundBins');
+    sliderRange(0, 1, 100);
 }

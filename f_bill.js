@@ -24,20 +24,27 @@ function setupGlitch(gtype) {
     });
 }
 
+function configureArt() {
+    canvas = createCanvas(900, 900);
+    imageMode(CENTER);
+    soundAnalyzer = new SoundAnalyzer(soundSmoothing/100, soundBins);
+}
 
 function setup() {
-    canvas = createCanvas(1080, 1080);
+    configureArt();
+    if (userReloaded) {
+      return;
+    }
+
+    glitch = new Glitch();
+	setupGlitch('jpg');
+    
     setupGuide();
     setupSongInput();
-    
-    imageMode(CENTER);
 
     gui = createGui('Settings').setPosition(20, 180);
     gui.addGlobals('lowThr', 'medThr', 'highThr', 'lowRandBytes', 'medRandBytes', 'highRandBytes', 'baseRandBytes');
-
-	glitch = new Glitch();
-	setupGlitch('jpg');
-    soundAnalyzer = new SoundAnalyzer(0.9, 16);
+    setupSoundGui(240, 180);
 
     setupAsciiSound();
 }

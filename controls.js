@@ -2,6 +2,7 @@ var uinput;
 var song;
 var lowTxt, medTxt, highTxt;
 var canvas;
+var userReloaded = false;
 
 function keyPressed() {
     switch (keyCode) {
@@ -13,6 +14,7 @@ function keyPressed() {
             }
             break;
         case 82:
+            userReloaded = true;
             setup();
             break;
     }
@@ -42,7 +44,7 @@ function songIsPlaying() {
 function setupAsciiSound() {
     lowTxt = createP('Low: 0');
     lowTxt.position(20,600);
-    medTxt = createP('Med: 0');
+    medTxt = createP('Mid: 0');
     medTxt.position(20,620);
     highTxt= createP('High: 0');
     highTxt.position(20,640);
@@ -62,7 +64,7 @@ function setupGuide() {
 }
 
 function updateAsciiSound(soundVals){
-    lowTxt.html('|'.repeat(soundVals.high));
-    medTxt.html('|'.repeat(soundVals.med));
-    highTxt.html('|'.repeat(soundVals.low));
+    lowTxt.html('|'.repeat(soundVals.high - 19));
+    medTxt.html('|'.repeat(soundVals.med - 19));
+    highTxt.html('|'.repeat(soundVals.low - 19));
 }

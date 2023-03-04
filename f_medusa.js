@@ -19,50 +19,60 @@ var medStroke = "#044A42";
 var lowBg = "#3A4750";
 var lowStroke = "#1B2430";
 
-let gui, guiCom;
+var gui, guiCom;
+
+function configureArt() {
+    canvas = createCanvas(700, 700);
+    let w = width;
+    for (let i = 0; i < 40; i++) {
+      let buffer = createGraphics(random(5, 20), random(5, 20));
+      buffer.pixelDensity(1);
+      var col, bg;
+      if (i == 0) {
+          bg = baseBg;
+          col = baseStroke;
+      } else if (i % 3 == 0) {
+          bg = lowBg;
+          col = lowStroke;
+      } else if (i % 3 == 1) {
+          bg = medBg;
+          col = medStroke;
+      } else {
+          bg = highBg; //now this
+          col = highStroke;
+      }
+      buffer.background(bg);
+      buffer.stroke(col);
+      buffer.strokeWeight(1);
+      buffer.line(random(5), random(5), random(5), random(5));
+      buffer.ellipse(0, 0, random(5), random(5));
+  
+      shapes.push({
+        pattern: createPattern(buffer),
+        w: w,
+        speed: random(500, 1000),
+        high: i % 3,
+      });
+      w -= 25;
+    }
+    
+    soundAnalyzer = new SoundAnalyzer(soundSmoothing/100, soundBins);
+}
 
 function setup() {
-  canvas = createCanvas(700, 700);
+  configureArt();
+  if (userReloaded) {
+    return;
+  }
   setupGuide();
   setupSongInput();
-  let w = width;
-  for (let i = 0; i < 40; i++) {
-    let buffer = createGraphics(random(5, 20), random(5, 20));
-    buffer.pixelDensity(1);
-    var col, bg;
-    if (i == 0) {
-        bg = baseBg;
-        col = baseStroke;
-    } else if (i % 3 == 0) {
-        bg = lowBg;
-        col = lowStroke;
-    } else if (i % 3 == 1) {
-        bg = medBg;
-        col = medStroke;
-    } else {
-        bg = highBg; //now this
-        col = highStroke;
-    }
-    buffer.background(bg);
-    buffer.stroke(col);
-    buffer.strokeWeight(1);
-    buffer.line(random(5), random(5), random(5), random(5));
-    buffer.ellipse(0, 0, random(5), random(5));
-
-    shapes.push({
-      pattern: createPattern(buffer),
-      w: w,
-      speed: random(500, 1000),
-      high: i % 3,
-    });
-    w -= 25;
-  }
-  soundAnalyzer = new SoundAnalyzer(0.9, 16);
+  
   gui = createGui('Runtime settings').setPosition(20, 180);
   gui.addGlobals('highVal', 'medVal', 'lowVal', 'lowMultiplier', 'medMultiplier', 'highMultiplier');
 
-  guiCom = createGui('Compile settings').setPosition(300, 180);
+  guiCom = createGui('Compile time settings').setPosition(300, 180);
   guiCom.addGlobals('highBg', 'highStroke', 'medBg', 'medStroke', 'lowBg', 'lowStroke');
+  setupSoundGui(300, 540);
   
   setupAsciiSound();
 }
