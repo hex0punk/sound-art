@@ -1,6 +1,7 @@
 var uinput;
 var song;
 var lowTxt, medTxt, highTxt;
+var canvas;
 
 function keyPressed() {
     switch (keyCode) {
@@ -19,7 +20,7 @@ function keyPressed() {
 
 function keyTyped() {
     if (key === 's') {
-        save(cnv, 'llanero.png');
+        save(canvas, 'dis0bedience.png');
     }
 }
 

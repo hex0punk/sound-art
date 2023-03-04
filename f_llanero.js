@@ -8,7 +8,7 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(1080, 1080);
+    canvas = createCanvas(1080, 1080);
     imageMode(CENTER);
 
 	glitch = new Glitch();

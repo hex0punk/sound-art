@@ -26,7 +26,7 @@ function setupGlitch(gtype) {
 
 
 function setup() {
-    createCanvas(1080, 1080);
+    canvas = createCanvas(1080, 1080);
     setupGuide();
     setupSongInput();
     

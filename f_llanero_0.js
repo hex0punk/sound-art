@@ -1,7 +1,6 @@
 
 let soundAnalyzer;
 let gradient;
-var cnv;
 let gui;
 const colors = ['#C55D55', '#da8569', '#f1e1aa', '#f1f4da', '#aabff1', '#8492df', '#6b8ada', '#77a8f2'];
 
@@ -21,7 +20,7 @@ var highMultiplier = 3;
 var ringNum = 8;
 
 function setup() {
-    cnv = createCanvas(1080, 1080);
+    canvas = createCanvas(1080, 1080);
     setupGuide();
     setupSongInput();
     gradient = createRadialGradient(height / 3, height - (height / 12), width / 2, height / 2 + (height / 4));
