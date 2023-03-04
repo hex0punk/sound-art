@@ -22,7 +22,7 @@ var lowStroke = "#1B2430";
 let gui, guiCom;
 
 function setup() {
-  createCanvas(700, 700);
+  canvas = createCanvas(700, 700);
   setupGuide();
   setupSongInput();
   let w = width;
