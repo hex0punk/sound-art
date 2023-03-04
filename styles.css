@@ -21,30 +21,34 @@
     font-family: 'inconsolata';
 }
 
-/* #controls {
-    margin-top: 45px;
-} */
 
-.menu > ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+.topnav {
+    overflow: hidden;
+    font-family: 'inconsolata';
+    color: black;
 }
 
-.menu > ul > li {
+.topnav a {
   float: left;
-}
-
-.menu > ul > li a {
-  display: block;
-  color: black;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  color: black;
 }
 
-/* Change the link color to #111 (black) on hover */
-.menu > ul > li a:hover {
-  text-decoration: underline;
+.topnav a:hover {
+    text-decoration: underline;
+}
+
+.topnav a.active {
+    color: black;
+  }
+
+
+.topnav-right {
+  float: right;
+}
+
+.topnav-right > a > img {
+    width: 25px;
 }
