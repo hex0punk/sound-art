@@ -64,7 +64,7 @@ function setupGuide() {
 }
 
 function updateAsciiSound(soundVals){
-    lowTxt.html('|'.repeat(soundVals.high - 19));
-    medTxt.html('|'.repeat(soundVals.med - 19));
-    highTxt.html('|'.repeat(soundVals.low - 19));
+    lowTxt.html('|'.repeat(soundVals.high));
+    medTxt.html('|'.repeat(soundVals.med));
+    highTxt.html('|'.repeat(soundVals.low));
 }

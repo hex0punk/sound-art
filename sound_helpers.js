@@ -29,12 +29,12 @@ class SoundAnalyzer {
         var high = [];
         for (let i = 0; i < spectrum.length; i++) {
             var amp = spectrum[i];
-            var ampsi = map(amp, 0, 256, 20, 100); 
-            if (i < nl){
+            var ampsi = map(amp, 0, 256, 1, 100); 
+            if (i < nl * 1.2){
                 low.push(ampsi);
-            } else if (i < nl*2) {
+            } else if (i < nl*1.5) {
                 med.push(ampsi);
-            } else if (i < nl*3) {
+            } else if (i < nl*1.8) {
                 high.push(ampsi);
             }
         }
