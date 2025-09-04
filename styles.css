@@ -4,7 +4,7 @@
 }
 
 #guide > p {
-    margin-top: 2px;
+    margin-top: expression(console.log(1));
     margin-bottom: 2px;
 }
 
